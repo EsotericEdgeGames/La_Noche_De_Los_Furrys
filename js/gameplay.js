@@ -3,6 +3,12 @@ function RNG(maximo){
  let aleatoriedad = Math.round(Math.random()*maximo);
  return aleatoriedad;
 }
+function calcularPorcentaje(porcentaje){
+  let maximo = 100/porcentaje
+  let aleatoriedad = RNG(maximo)
+  return aleatoriedad === 0
+}
+
 
 let player
 let fase
@@ -33,8 +39,9 @@ function iniciarGameplay(){
         botiquinesDisponibles:2, //Cantidad de botiquines disponibles
         monedas:0,
         monedasGastadas:0,
-        dañoPorTiro:1,
-        velocidadRecarga: 0
+        dañoPorTiro:1, //Daño que el jugador hace en cada disparo
+        velocidadRecarga:0, //Tiempo que el jugador demora en recargar
+        mejoraBalas:0 //% de chance de no consumir balas
       }
     if (player.armas.length === 0){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")

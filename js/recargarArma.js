@@ -4,13 +4,31 @@ function recargar(){
     recargando = true
     let armaEquipada = player.armas[player.equipada]
     let balasRestantes = player.balasDisponibles
-    let tiempoRecarga = (player.velocidadRecarga / 100) * armaEquipada.tiempoRecarga
+    let tiempoRecarga
+    if (player.velocidadRecarga !== 0){
+      tiempoRecarga = (player.velocidadRecarga / 100) * armaEquipada.tiempoRecarga
+      tiempoRecarga = armaEquipada.tiempoRecarga - tiempoRecarga
+      if (player.velocidadRecarga >= 100){
+        tiempoRecarga = 100
+      }
+    }
+    else{
+      tiempoRecarga = armaEquipada.tiempoRecarga
+    }
     switch(armaEquipada.recarga){
       case "full":
         if (armaEquipada.balas + balasRestantes >= armaEquipada.balasMaximas){
           let municionGastada = armaEquipada.balasMaximas - armaEquipada.balas
           armaEquipada.balas = armaEquipada.balasMaximas
-          player.balasDisponibles = player.balasDisponibles - municionGastada
+          if (player.mejoraBalas !== 0){
+            if (!calcularPorcentaje(player.mejoraBalas)){
+              console.log("la municion se gasto")
+              player.balasDisponibles = player.balasDisponibles - municionGastada
+            }
+            else{
+              console.log("la municion no se gasto")
+            }
+          }
         }
         else{
           armaEquipada.balas = armaEquipada.balas + balasRestantes
