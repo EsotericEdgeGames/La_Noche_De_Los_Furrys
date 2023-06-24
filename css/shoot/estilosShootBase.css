@@ -31,23 +31,23 @@
     z-index: 200;
     height: 10%;
 }
-#shootArea{
-    border-bottom: 1px solid;
-    border-top:1px solid ;
-    width: 100%;
-    height: 80%;
-    z-index: 0;
-    overflow: hidden;
-    cursor: url(./../../assets/cursores/crossHair.cur),auto ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    overflow: hidden;
-    background: url(./../../assets/start/Forest.png) no-repeat ;
-    background-position: center;
-    background-size: cover;
-}
+#shootArea{ 
+     border-bottom: 1px solid;
+     border-top:1px solid ;
+     width: 100%;
+     height: 80%;
+     z-index: 0;
+     overflow: hidden;
+     cursor: url(./../../assets/cursores/crossHair.cur),auto ;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 0;
+     overflow: hidden;
+     background: url(./../../assets/start/Forest.png) no-repeat ;
+     background-position: center;
+     background-size: cover;
+ }
 #spawnPoints div{
     cursor: url(./../../assets/cursores/crossHairBang.cur),auto ;
 }
