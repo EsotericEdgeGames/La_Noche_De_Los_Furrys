@@ -9,7 +9,7 @@
     animation: StartLogo 10s infinite alternate ;
     background: url(./../../assets/start/Forest.png) no-repeat;
     background-position: center;
-    background-size: cover;
+    
   }
   @keyframes StartLogo {from {background-position-x: -50vh;}to {background-position-x: -90vh;}}
 
@@ -26,7 +26,7 @@
 #logo{
     width: 1000px; 
     height: 400px; 
-    background-color: red; 
+    background-color: rgba(255, 0, 0, 0.479); 
     display: flex;
     justify-content: center;
     align-items: center;

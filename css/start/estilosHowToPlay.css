@@ -17,8 +17,6 @@
     cursor: url(./../../assets/cursores/cursorBang.cur),auto ;
 }
 #configurationH button:hover{
-    height: 100px;
-    width: 300px;
     font-size: xx-large;
     border: 5px ;
     border-style:dashed;
