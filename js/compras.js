@@ -2,7 +2,8 @@ let precios = {
     botiquin:3,
     balas:5,
     arma:30,
-    daño:20
+    daño:20,
+    velocidadRecarga:10
 }
 
 const comprarBotiquin = document.getElementById("comprarBotiquin")
@@ -13,11 +14,15 @@ const comprarArma = document.getElementById("comprarArma")
 comprarArma.textContent = "comprar el arma " + armas[1].nombre + " por " + precios.arma
 const comprarDaño = document.getElementById("comprarDaño")
 comprarDaño.textContent = "comprar mejora permanente de daño por " + precios.daño
+const comprarRecarga = document.getElementById("comprarRecarga")
+comprarRecarga.textContent = "Aumento de velocidad de recarga (10%) por " + precios.velocidadRecarga
+
 
 comprarBotiquin.addEventListener("click",function(){realizarCompra(precios.botiquin)})
 comprarBalas.addEventListener("click",function(){realizarCompra(precios.balas)})
 comprarArma.addEventListener("click",function(){realizarCompra(precios.arma)})
 comprarDaño.addEventListener("click",function(){realizarCompra(precios.daño)})
+comprarRecarga.addEventListener("click",function(){realizarCompra(precios.reducirRecarga)})
 
 
 function realizarCompra(item){
@@ -48,6 +53,10 @@ function realizarCompra(item){
             case precios.daño:
                 player.dañoPorTiro++
                 precios.daño = precios.daño*2
+                break
+            case precios.velocidadRecarga:
+                player.velocidadRecarga = player.velocidadRecarga + 10
+                precios.recarga = precios.recarga*3
         }
         actualizarValoresPantalla()
     }

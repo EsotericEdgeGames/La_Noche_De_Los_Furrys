@@ -4,6 +4,7 @@ function recargar(){
     recargando = true
     let armaEquipada = player.armas[player.equipada]
     let balasRestantes = player.balasDisponibles
+    let tiempoRecarga = (player.velocidadRecarga / 100) * armaEquipada.tiempoRecarga
     switch(armaEquipada.recarga){
       case "full":
         if (armaEquipada.balas + balasRestantes >= armaEquipada.balasMaximas){
@@ -31,7 +32,7 @@ function recargar(){
     if (balasRestantes>0){
       setTimeout(() => {
         recargando = false
-      }, armaEquipada.tiempoRecarga);
+      }, tiempoRecarga);
     }
     else{
       recargando = false

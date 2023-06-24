@@ -20,7 +20,7 @@ const armas = [{ //Armas adquiridas
     balas:15,
     balasMaximas:15,
     recarga:"full",
-    tiempoRecarga:10,
+    tiempoRecarga:500,
     especial:"rafaga",
     balasPorTiro:4
   }]
@@ -33,7 +33,8 @@ function iniciarGameplay(){
         botiquinesDisponibles:2, //Cantidad de botiquines disponibles
         monedas:0,
         monedasGastadas:0,
-        dañoPorTiro:1
+        dañoPorTiro:1,
+        velocidadRecarga: 0
       }
     if (player.armas.length === 0){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")
