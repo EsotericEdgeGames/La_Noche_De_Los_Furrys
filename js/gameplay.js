@@ -44,7 +44,7 @@ function iniciarGameplay(){
 
 const divMunicionRestante = document.getElementById("municionRestante")
 document.addEventListener("mousemove", function(event) {
-  var offsetX = 10; // Valor para alejar el div a la derecha del cursor
+  var offsetX = 40; // Valor para alejar el div a la derecha del cursor
   var offsetY = -50; // Valor para alejar el div hacia abajo del cursor
 
   var mouseX = event.clientX + offsetX;

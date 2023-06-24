@@ -1,0 +1,94 @@
+@media screen and (min-width: 2560px) and (min-height: 1440px) {
+    #logo{
+        width: 150vh; 
+        height: 50vh; 
+        background-color: rgba(0, 153, 255, 0.445); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #start{
+        background-size: cover;
+    }
+    #gameTitle button{
+        height: 15vh;
+        width: 40vh;
+    }
+    #configurationH button{
+        height: 10vh;
+        width: 30vh;
+    }
+    #replace div{
+        height: 50%;
+        width: 80%;
+        font-size: 70px;
+    }
+    #textoConfiguration{
+        width: 50vh;
+        font-size: 4vh;
+    }
+    #health{
+        font-size: 4vh;
+    }
+    #accion div{
+        font-size:2.5vh ;
+    }
+    #finalRonda{
+        scale: 2;
+    }
+    #tienda{
+        scale:2.5;
+    }
+    #pantallaDeCarga {
+        scale: 2;
+    }
+    #municionRestante{
+        scale: 4;
+        transform: translate(2vh, -1vh);
+    }
+    @keyframes enemyMoved {
+        from {z-index: 5;}
+        to { scale: 12;  
+          transform: translateY(2px);
+          z-index: 10;}
+      }
+      #dead{
+        overflow: hidden;
+      }
+      #deadTitle div{
+        scale: 3;
+      }
+      @keyframes deadTitle {from {scale: 3;}to {    transform: translate(0% ,0%);z-index: 10; scale: 3;}}
+      #ranking{
+        scale: 1.5;
+        top: -20%;
+      }
+      #top {
+        margin-top: 4%;
+        font-size: 2vh;
+      }
+      #reverseButtonB{
+        display: flex;
+        right: 0%;
+        scale: 2;
+      }
+      .top10 {
+        gap:2vh;
+      }
+      .column {
+        column-gap: 2vh;
+      }
+      .primero::after{
+        display: none;
+      }
+      .primero{
+        font-size: 3vh;
+      }
+      #puntuacion{
+        font-size: 3vh;
+        margin-bottom: 3%;
+      }
+      #formNombre{
+        scale: 1.5;
+      }
+    }
