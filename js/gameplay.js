@@ -33,7 +33,7 @@ function iniciarGameplay(){
         botiquinesDisponibles:2, //Cantidad de botiquines disponibles
         monedas:0,
         monedasGastadas:0,
-        dañoPorTiro:3
+        dañoPorTiro:1
       }
     if (player.armas.length === 0){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")
