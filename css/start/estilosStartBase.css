@@ -1,5 +1,4 @@
 #start {
-    background: url(./../../assets/start/Forest.png) no-repeat;
     display: flex;
     flex-direction: column;
     justify-content:space-around;
@@ -10,6 +9,7 @@
     background-position: center;
     background-size: cover;
     animation: StartLogo 10s infinite alternate ;
+    background: url(./../../assets/start/Forest.png) no-repeat;
   }
   @keyframes StartLogo {from {background-position-x: -50vh;}to {background-position-x: -90vh;}}
 

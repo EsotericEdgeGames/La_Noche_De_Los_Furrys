@@ -12,8 +12,10 @@ function noPuedeDisparar(){
 function triggerDisparo(){
   let armaEquipada = player.armas[player.equipada]
   if (!recargando){
+
     switch(armaEquipada.especial){
       case false:
+        console.log("gastando")
         if (armaEquipada.balas>0){
           armaEquipada.balas--
         }

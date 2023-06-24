@@ -23,13 +23,6 @@ const armas = [{ //Armas adquiridas
     tiempoRecarga:10,
     especial:"rafaga",
     balasPorTiro:4
-  },
-  {
-    nombre:"terciaria",
-    balas:20,
-    balasMaximas:20,
-    recarga:"full",
-    tiempoRecarga:500
   }]
 function iniciarGameplay(){
     player = { //Stats del jugador
@@ -44,8 +37,6 @@ function iniciarGameplay(){
     if (player.armas.length === 0){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")
         player.armas.push(armaPrincipal)
-        let metralleta = armas.find(a=>a.nombre === "metralleta") //testing
-        player.armas.push(metralleta) //testing
     }
     actualizarValoresPantalla()
     iniciarGeneracionAutomatica()

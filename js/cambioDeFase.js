@@ -5,7 +5,7 @@ document.getElementById("continuarB").addEventListener("click",function(e){
         puedeDisparar()
     }, 900);
     transicionar(finDeRonda,"desaparecer")
-    iniciarGeneracionAutomatica()
+    iniciarGeneracionAutomatica(true)
 })
 function cambioDeFase(){
     transicionar(finDeRonda,"aparecer")

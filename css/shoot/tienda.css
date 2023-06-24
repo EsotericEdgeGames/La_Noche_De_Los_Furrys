@@ -1,11 +1,14 @@
 #tienda{
     z-index: 20;
     background-color: rgba(220, 20, 60, 0.212);
-    height: 400px;
-    width: 400px;
+    height: 0px;
+    width: 0px;
     position: absolute;
     border: 5px dotted;
     transition: 2s;
+    animation: tienda 1s 1s forwards;
+    cursor: url(./../../assets/cursores/cursor.cur),auto ;
+    
 }
 #tiendaName{
     display: flex;
@@ -16,9 +19,21 @@
     padding-bottom: 4%;
     padding-top: 4%;
     border-bottom: 3px solid;
+    visibility: hidden;
+    animation: tiendaB 1s forwards 2s ;
 }
 #itemStore > *{
     justify-content: center;
     border-bottom: 2px double;
     padding-top: 3%;
+    visibility: hidden;
+    animation: tiendaB 1s forwards 2s ;
+    cursor: url(./../../assets/cursores/cursorBang.cur),auto ;
 }
+#itemStore button{
+    cursor: url(./../../assets/cursores/cursorBang.cur),auto ;
+}
+@keyframes tienda {from {}to {    
+    height: 400px;
+    width: 400px;}}
+@keyframes tiendaB {from {}to {visibility: visible;}}

@@ -44,7 +44,6 @@ function recargarPuntajes(){
         let i = 0
         e.forEach(function(doc,index){
             i++
-            console.log(i)
             var nombre = doc.data().nombre
             var puntuacion= doc.data().puntuacion
             var elemento = document.getElementById(i)

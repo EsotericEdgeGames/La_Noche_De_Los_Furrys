@@ -18,7 +18,7 @@ function generarEnemigo() {
 }
 
 
-function iniciarGeneracionAutomatica() {
+function iniciarGeneracionAutomatica(buffMonedas) {
   setTimeout(() => {
     let enemigosGenerados = 1
     var intervalo = 1000 - (rondaActual*10);
@@ -35,6 +35,9 @@ function iniciarGeneracionAutomatica() {
         intervalo = 1000 - (rondaActual*10)
         enemigoGenerico.vida = 3*rondaActual
         enemigoGenerico.monedas = rondaActual
+        if (buffMonedas){
+          enemigoGenerico.monedas = rondaActual*2
+        }
       }
       }, intervalo);
     }, 2000);

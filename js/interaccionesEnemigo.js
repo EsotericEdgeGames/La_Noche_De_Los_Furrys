@@ -49,5 +49,5 @@ function enemigoRecibeDaño(event, index, enemy) {
 }
   function dropItems(){
     player.balasDisponibles = player.balasDisponibles + (RNG(15))
-    municionRestante.textContent = "Balas restantes: " + player.balasDisponibles
+    actualizarValoresPantalla()
 }
