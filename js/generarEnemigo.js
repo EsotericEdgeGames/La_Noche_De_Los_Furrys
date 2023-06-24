@@ -46,7 +46,6 @@ function iniciarGeneracionAutomatica(buffMonedas) {
   function detenerGeneracionAutomatica() {
     clearInterval(generadorEnemigos);
   }
-  //botonCambioDeFase.textContent = "fase " + (enemigoGenerico.vida/3)
 
 
 

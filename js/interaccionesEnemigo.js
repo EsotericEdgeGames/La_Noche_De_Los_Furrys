@@ -14,18 +14,19 @@ function damage(event, index, enemigoActual) { //El enemigo te hittea
 function enemigoRecibeDaño(event, index, enemy) {
     if (!recargando){
         let armaEquipada = player.armas[player.equipada]
+        let dañoRealizado = player.dañoPorTiro
         switch(armaEquipada.especial){
             case false:
                 if (armaEquipada.balas>0){
-                    enemigosVivos[index].vida--
+                    enemigosVivos[index].vida = enemigosVivos[index].vida - dañoRealizado
                 }
                 break
             case "rafaga":
                 if (armaEquipada.balas>armaEquipada.balasPorTiro){
-                    enemigosVivos[index].vida = enemigosVivos[index].vida - armaEquipada.balasPorTiro
+                    enemigosVivos[index].vida = enemigosVivos[index].vida - (armaEquipada.balasPorTiro * dañoRealizado)
                 }
                 else if (armaEquipada.balas>0){
-                    enemigosVivos[index].vida = enemigosVivos[index].vida - armaEquipada.balas
+                    enemigosVivos[index].vida = enemigosVivos[index].vida - (armaEquipada.balas * dañoRealizado)
                 }
         }
         if (enemigosVivos[index].vida <= 0) {
