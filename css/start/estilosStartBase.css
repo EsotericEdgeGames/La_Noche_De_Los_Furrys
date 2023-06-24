@@ -1,5 +1,5 @@
 #start {
-    background-color: aqua;
+    background: url(./../../assets/start/Forest.png) no-repeat;
     display: flex;
     flex-direction: column;
     justify-content:space-around;
@@ -7,7 +7,12 @@
     gap: 1000px;
     overflow: hidden;
     cursor: url(./../../assets/cursores/cursor.cur),auto ;
+    background-position: center;
+    background-size: cover;
+    animation: StartLogo 10s infinite alternate ;
   }
+  @keyframes StartLogo {from {background-position-x: -50vh;}to {background-position-x: -90vh;}}
+
 #gameTitle{
     display: flex;
     flex-direction: column;

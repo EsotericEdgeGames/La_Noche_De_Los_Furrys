@@ -32,7 +32,9 @@
     height: 10%;
 }
 #shootArea{
-    background-color: blue;
+    background: url(./../../assets/start/Forest.png) no-repeat ;
+    background-position: center;
+    background-size: cover;
     border-bottom: 1px solid;
     border-top:1px solid ;
     width: 100%;
