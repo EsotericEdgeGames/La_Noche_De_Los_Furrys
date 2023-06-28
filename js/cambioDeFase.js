@@ -8,6 +8,7 @@ document.getElementById("continuarB").addEventListener("click",function(e){
     iniciarGeneracionAutomatica(true)
 })
 function cambioDeFase(){
+    terminarFase = false
     transicionar(finDeRonda,"aparecer")
     textoFinDeRonda.textContent = "Completada la ronda " + (rondaActual-1)
     noPuedeDisparar()
