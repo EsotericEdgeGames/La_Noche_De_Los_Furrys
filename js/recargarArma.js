@@ -29,6 +29,9 @@ function recargar(){
               console.log("la municion no se gasto")
             }
           }
+          else{
+            player.balasDisponibles = player.balasDisponibles - municionGastada
+          }
         }
         else{
           armaEquipada.balas = armaEquipada.balas + balasRestantes
