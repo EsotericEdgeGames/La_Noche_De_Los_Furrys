@@ -58,7 +58,6 @@ function iniciarGameplay(){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")
         player.armas.push(armaPrincipal)
     }
-    crearTienda()
     actualizarValoresPantalla()
     iniciarGeneracionAutomatica()
 }

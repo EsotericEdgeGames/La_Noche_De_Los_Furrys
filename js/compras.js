@@ -101,7 +101,7 @@ function realizarCompra(item,precio,escalado,index){
                 player.mejoraBalas = player.mejoraBalas + 5
                 break
             case "metralleta":
-                let metralleta = armas.find(a=>a.nombre === "pistola")
+                let metralleta = armas.find(a=>a.nombre === "metralleta")
                 player.armas.push(metralleta)
                 break
         }
