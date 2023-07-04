@@ -8,7 +8,6 @@ function enviarFormulario(){
         nombre: nombre,
         puntuacion: puntos
     };
-    console.log(jugadoresRef)
     jugadoresRef.add(datosJugador)
     .then(function(docRef) {
         localStorage.setItem("nombre",nombre)

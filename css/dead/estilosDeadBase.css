@@ -16,7 +16,7 @@
 }
 @keyframes dead {from {filter: blur(130px); box-shadow: 100vh 100vh 100vh red inset;}to {}}
 @keyframes deadTitle {from {}to {    transform: translate(0% ,0%);z-index: 10; scale: 1;}}
-@keyframes deadTop {from {opacity: 0%;}to {opacity: 100%;}}
+@keyframes deadTop {from {opacity: 0%;}to {opacity: 100%;pointer-events: all;}}
 
 #deadTitle div{
     transform: translate(0% ,20vh); 
@@ -32,6 +32,7 @@
 #deadLogo{
   animation: deadTop 1s 1 11s ;
   opacity: 0%;
+  pointer-events: none;
   animation-fill-mode: forwards;
 }
 @keyframes deadFlash {

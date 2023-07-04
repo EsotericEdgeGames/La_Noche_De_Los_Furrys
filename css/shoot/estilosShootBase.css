@@ -129,6 +129,7 @@
     cursor: url(./../../assets/cursores/cursorBang.cur),auto ;
     animation: finalRondaB 3s 1 forwards ;
     animation-delay: 3s;
+    pointer-events: none;
 }
 #textoFinalRonda{
     width: 100%;;
@@ -140,4 +141,4 @@
     align-items: center;
 }
 @keyframes finalRonda {from {}to {width: 1200px; opacity: 100%;}}
-@keyframes finalRondaB {from {}to {opacity: 100%;}}
+@keyframes finalRondaB {from {}to {opacity: 100%;pointer-events: all;}}
