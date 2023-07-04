@@ -10,7 +10,18 @@ function calcularPorcentaje(porcentaje){
 }
 
 
-let player
+let player = {
+  armas: [],
+  salud:100,
+  equipada:0, //Index del arma equipada
+  balasDisponibles:0, //Cantidad de balas disponibles para recargar
+  botiquinesDisponibles:0, //Cantidad de botiquines disponibles
+  monedas:0,
+  monedasGastadas:0,
+  dañoPorTiro:0, //Daño que el jugador hace en cada disparo
+  velocidadRecarga:0, //Tiempo que el jugador demora en recargar
+  mejoraBalas:0 //% de chance de no consumir balas
+}
 let fase
 let jugadorPierde = false
 const armas = [{ //Armas adquiridas
@@ -47,6 +58,7 @@ function iniciarGameplay(){
         let armaPrincipal = armas.find(a=>a.nombre === "pistola")
         player.armas.push(armaPrincipal)
     }
+    crearTienda()
     actualizarValoresPantalla()
     iniciarGeneracionAutomatica()
 }
