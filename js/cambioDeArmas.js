@@ -29,3 +29,18 @@ document.addEventListener("wheel", function(e) { //Cambiar arma
     return false;
   }
 });
+
+function cambiarArmasConNumeros(index){
+  if (!triggerDelay){
+    if (!!player.armas[index-1]){
+      player.equipada = index-1
+      let armaEquipada = player.armas[player.equipada]
+      const armaEquipadaDisplay = document.getElementById("weaponH")
+      armaEquipadaDisplay.textContent = "Arma equipada: " +armaEquipada.nombre;
+      actualizarValoresPantalla()
+      triggerTimeout = setTimeout(function() {
+        triggerDelay = false;
+      }, 500);
+    }
+  }
+}

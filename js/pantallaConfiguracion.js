@@ -7,7 +7,10 @@ const textoBloqueoPantallaDeConfiguracion = document.getElementById("textoReplac
 let teclas = {
     recargar:"R",
     usarBotiquin:"C",
-    usarBomba:"Y"
+    usarBomba:"Y",
+    arma1:"1",
+    arma2:"2",
+    arma3:"3"
 }
 const storedConfig = localStorage.getItem("controlesPrevios");
 if (storedConfig) {
@@ -33,6 +36,9 @@ document.addEventListener("keydown",function(e){
                 case "recargar":recargar();break
                 case "usarBotiquin":usarBotiquin();break
                 case "usarBomba":usarBomba();break
+                case "arma1":cambiarArmasConNumeros(1);break
+                case "arma2":cambiarArmasConNumeros(2);break
+                case "arma3":cambiarArmasConNumeros(3);break
             }
         }
     }
