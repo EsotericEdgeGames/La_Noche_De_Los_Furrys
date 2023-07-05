@@ -1,13 +1,18 @@
-function damage(event, index, enemigoActual) { //El enemigo te hittea
+function damage(event, index, enemigoActual,enemigo) { //El enemigo te hittea
     if (jugadorPierde){
         enemigoActual.remove()
         enemigoActual = false
+    }
+    let daño
+    switch(enemigo){
+        case "foxy":daño=foxy.daño;
+        case "pato":daño=pato.daño
     }
     if (enemigoActual) {
         enemigoActual.style.animation = "none";
         enemigoActual.offsetHeight;
         enemigoActual.style.animation = null;
-        player.salud = player.salud - 10;
+        player.salud = player.salud - daño;
         actualizarValoresPantalla()
     }
 }

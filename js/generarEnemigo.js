@@ -1,16 +1,25 @@
 let enemigosVivos = []
-const spriteEnemigos = ["soyUnSpriteDeEnemigo"]
+const spriteEnemigos = ["foxy","pato"]
 
-var enemigoGenerico = {
+var foxy = {
     vida:3,
-    monedas:0
+    monedas:0,
+    daño:10
 }
+var pato = {
+    vida:2,
+    monedas:4,
+    daño:20
+}
+
 
 var indiceEnemigo = -1;
 
 var generadorEnemigos;
 
 var terminarFase
+
+var multiplicador
 
 function generarEnemigo() {
     indiceEnemigo++;
@@ -29,15 +38,16 @@ function iniciarGeneracionAutomatica(buffMonedas) {
       console.log(enemigosGenerados)
       if ((enemigosGenerados>rondaActual) && (!jugadorPierde)) {
         rondaActual++
+        contadorRondas++;
+        if (contadorRondas % 5 === 0) {
+          incrementoSprite++;
+        }
         console.log("acabada la ronda " + (rondaActual-1))
         terminarFase = true
         detenerGeneracionAutomatica()
         intervalo = 1000 - (rondaActual*10)
-        enemigoGenerico.vida = 3*rondaActual
-        enemigoGenerico.monedas = rondaActual
-        if (buffMonedas){
-          enemigoGenerico.monedas = rondaActual*2
-        }
+        
+        //ELIMINADO BUFF MONEDAS.
       }
       }, intervalo);
     }, 2000);
@@ -48,44 +58,72 @@ function iniciarGeneracionAutomatica(buffMonedas) {
   }
 
 
-
+  var contadorRondas = 0;
+  var incrementoSprite = 0;
   function crearEnemigo(index) {
-    let spriteEnemigoActual = spriteEnemigos[RNG(spriteEnemigos.length-1)] //Definir la imagen del enemigo
+    let indiceSprite = 0;
+    let indiceActualizado = indiceSprite + incrementoSprite;
+    let spriteEnemigoActual = spriteEnemigos[RNG(indiceActualizado % spriteEnemigos.length)];
     var nuevoEnemigo = document.createElement("div");//Crear al enemigo
     nuevoEnemigo.id = "enemy";
-    let animacion
-    switch(RNG(4)){ //Definir como se movera el enemigo
+    switch(spriteEnemigoActual){
+      case "foxy":spawnFoxy(nuevoEnemigo,index);break
+      case "pato":spawnPato(nuevoEnemigo,index);break
+    }
+    
+    
+    
+    nuevoEnemigo.addEventListener("animationend", function (event) {
+      damage(event, index, nuevoEnemigo,spriteEnemigoActual);
+    });
+    nuevoEnemigo.addEventListener("click", function (event) {
+      enemigoRecibeDaño(event, index, nuevoEnemigo,spriteEnemigoActual);
+    });
+  }
+
+function spawnFoxy(elementoEnemigo,index){
+  let animacion
+    switch(RNG(1)){ //Definir como se movera el enemigo
       case 0:
         animacion = "moveOne"
         break
       case 1:
         animacion = "moveTwo"
-        break
-      case 2:
-        animacion = "moveThree"
-        break
-      case 3:
-        animacion = "moveFour"
-        break
-      case 4:
-        animacion = "moveFive"
-      break      
+        break      
     }
-    nuevoEnemigo.classList.add(animacion,spriteEnemigoActual) //Agregar las clases
-    var spawnPoints = document.getElementById("spawnPoints");
-    spawnPoints.appendChild(nuevoEnemigo);
-    enemigosVivos.push({
-       index: index,
-       vida: enemigoGenerico.vida,
-       indiceBorrar: nuevoEnemigo,
-       imagen: spriteEnemigoActual,
-       monedas: enemigoGenerico.monedas,
-      });
-    nuevoEnemigo.addEventListener("animationend", function (event) {
-      damage(event, index, nuevoEnemigo);
-    });
-    nuevoEnemigo.addEventListener("click", function (event) {
-      enemigoRecibeDaño(event, index, nuevoEnemigo);
-    });
+  elementoEnemigo.classList.add(animacion,"foxy") //Agregar las clases
+  var spawnPoints = document.getElementById("spawnPoints");
+  spawnPoints.appendChild(elementoEnemigo);
+  enemigosVivos.push({
+    index: index,
+    vida: foxy.vida * rondaActual,
+    indiceBorrar: elementoEnemigo,
+    imagen: "foxy",
+    monedas: foxy.monedas + rondaActual,
+   });
+}
+
+function spawnPato(elementoEnemigo,index){
+  let animacion
+  switch(RNG(2)){
+    case 0:
+      animacion = "moveThree"
+      break
+    case 1:
+      animacion = "moveFour"
+      break
+    case 2:
+      animacion = "moveFive"
+      break
   }
-  
+  elementoEnemigo.classList.add(animacion,"pato")
+  var spawnPoints = document.getElementById("spawnPoints");
+  spawnPoints.appendChild(elementoEnemigo);
+  enemigosVivos.push({
+    index: index,
+    vida: pato.vida * rondaActual,
+    indiceBorrar: elementoEnemigo,
+    imagen: "pato",
+    monedas: pato.monedas + rondaActual,
+   });
+}
