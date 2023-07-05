@@ -3,9 +3,15 @@ function recolectarMonedas(){
         let monedaActual = monedasPorRecolectar[i]
         monedaActual.div.classList.add("catchCoins")
         monedaActual.div.addEventListener("animationend",function(e){
-            player.monedas = player.monedas + monedaActual.cantidad
+            if (monedaActual.cantidad<=1){
+                player.monedas = player.monedas + monedaActual.cantidad
+            }
+            else{
+                player.monedas = player.monedas + (Math.floor(monedaActual.cantidad/2))
+            }
             monedaActual.div.remove()
             actualizarValoresPantalla()
         })
     }
+    monedasPorRecolectar = []
 }
