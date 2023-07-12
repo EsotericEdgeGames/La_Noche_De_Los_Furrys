@@ -3,13 +3,18 @@ const gameArea = document.getElementById("shootArea")
 
 function puedeDisparar(){
   gameArea.addEventListener("click", triggerDisparo);
-}
+  gameArea.classList.remove("loader")
+} 
 
 function noPuedeDisparar(){
   gameArea.removeEventListener("click", triggerDisparo);
+  gameArea.classList.add("loader")
 }
 
 function triggerDisparo(){
+  if (bloqueoDeTiro){
+    return
+  }
   let armaEquipada = player.armas[player.equipada]
   if (!recargando){
 

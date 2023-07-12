@@ -24,7 +24,7 @@ let player = {
 }
 let fase
 let jugadorPierde = false
-const armas = [{ //Armas adquiridas
+const armas = [{ //Armas existentes
     nombre:"pistola",
     balas:10,
     balasMaximas:10,

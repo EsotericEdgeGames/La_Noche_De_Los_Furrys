@@ -74,3 +74,33 @@ body{
     animation-direction: alternate;
     animation-timing-function:linear
 }
+.loader{
+    animation: loader 1s infinite normal !important ;
+}
+@keyframes loader {
+    from {
+         cursor: url(./../../assets/cursores/loader/loaderOCHO.cur), auto ; 
+    }
+    12% {
+        cursor: url(./../../assets/cursores/loader/loaderSIETE.cur), auto ; 
+    }
+    24% {
+        cursor: url(./../../assets/cursores/loader/loaderSEIS.cur), auto ; 
+    }
+    36% {
+        cursor: url(./../../assets/cursores/loader/loaderCINCO.cur), auto ; 
+    }
+    48% {
+        cursor: url(./../../assets/cursores/loader/loaderCUATRO.cur), auto ; 
+    }
+    55% {
+        cursor: url(./../../assets/cursores/loader/loaderTRES.cur), auto ; 
+    }
+    80% {
+        cursor: url(./../../assets/cursores/loader/loaderDOS.cur), auto ; 
+    }
+    100% {
+        cursor: url(./../../assets/cursores/loader/loaderUNO.cur), auto; 
+    }
+
+}

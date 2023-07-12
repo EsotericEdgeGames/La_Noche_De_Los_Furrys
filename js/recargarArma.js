@@ -2,6 +2,7 @@ const balasDisponiblesParaRecargar = document.getElementById("remainingAmmunitio
 
 function recargar(){
     recargando = true
+    noPuedeDisparar()
     let armaEquipada = player.armas[player.equipada]
     let balasRestantes = player.balasDisponibles
     let tiempoRecarga
@@ -53,6 +54,7 @@ function recargar(){
     if (balasRestantes>0){
       setTimeout(() => {
         recargando = false
+        puedeDisparar()
       }, tiempoRecarga);
     }
     else{
