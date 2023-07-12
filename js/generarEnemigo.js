@@ -29,6 +29,9 @@ function generarEnemigo() {
 
 function iniciarGeneracionAutomatica(buffMonedas) {
   setTimeout(() => {
+    bloqueoDeTiro = false
+  }, 5);
+  setTimeout(() => {
     let enemigosGenerados = 1
     var intervalo = 1000 - (rondaActual*10);
     generadorEnemigos = setInterval(function () {
