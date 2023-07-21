@@ -12,12 +12,22 @@
     }
     #gameTitle button{
         height: 15vh;
-        width: 40vh;
+        width: 70vh;
     }
     #configurationH button{
-        height: 10vh;
-        width: 30vh;
+        height: 20vh;
+        width: 50vh;
+        font-size:6vh;
+        border: 15px;
+        border-style: dotted;
     }
+    #configurationH button:hover{
+      height: 20vh;
+      width: 50vh;
+      font-size:6vh;
+      border: 15px;
+      border-style: dashed;
+  }
     #replace div{
         height: 50%;
         width: 80%;
@@ -37,13 +47,40 @@
         scale: 2;
     }
     #tienda{
-        scale:2.5;
+      animation: tienda 1s 1s forwards;
     }
-    #pantallaDeCarga {
+    @keyframes tienda {from {}to {    
+      width: 1000px; 
+      height: 430px;
+  }}
+    #tiendaName p{
+      font-size: 4vh;
+  }
+  #tiendaName p::first-letter{
+    font-size: 4.5vh;
+    color: green;
+  }
+  #salirTienda{
+    font-size: 3vh;
+  }
+  #itemStore button{
+    width:  150px;
+    height: 50px;
+  }
+  #itemStore{
+    padding-top: 40px;
+    row-gap: 40px;
+    column-gap: 5px;
+  }
+  #itemStore img{
+    width: 50px;
+  }
+    #cargando  {
         scale: 2;
+        transform: translate(-1vh);
     }
     #municionRestante{
-        scale: 4;
+        scale: 3;
         transform: translate(2vh, -1vh);
     }
     @keyframes enemyMoved {
@@ -57,8 +94,9 @@
       }
       #deadTitle div{
         scale: 3;
+        transform: translate(0vh, 13vh);
       }
-      @keyframes deadTitle {from {scale: 3;}to {    transform: translate(0% ,0%);z-index: 10; scale: 3;}}
+      @keyframes deadTitle {from {scale: 3;}to {    transform: translate(0% ,20%);z-index: 10; scale: 3;}}
       #ranking{
         scale: 1.5;
         top: -20%;
@@ -78,9 +116,19 @@
       .column {
         column-gap: 2vh;
       }
-      .primero::after{
-        display: none;
+      .primero::before{
+        content: ""; 
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        height: 200px; 
+        background: url(./../../assets/dead/trophy.png) no-repeat;
+        background-size: contain; 
+        margin-right: 3%;
+        transform: rotate(15deg);
+        animation: trophy 2s infinite alternate;
       }
+      @keyframes trophy {from {transform: rotate(15deg);}to { transform: rotate(-15deg);}}
       .primero{
         font-size: 3vh;
       }
@@ -89,6 +137,7 @@
         margin-bottom: 3%;
       }
       #formNombre{
-        scale: 1.5;
+        scale: 2;
+        transform: translate(6vh);
       }
     }
