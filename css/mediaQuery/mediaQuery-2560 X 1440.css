@@ -47,8 +47,34 @@
         scale: 2;
     }
     #tienda{
-        scale:2.5;
+      animation: tienda 1s 1s forwards;
     }
+    @keyframes tienda {from {}to {    
+      width: 1000px; 
+      height: 430px;
+  }}
+    #tiendaName p{
+      font-size: 4vh;
+  }
+  #tiendaName p::first-letter{
+    font-size: 4.5vh;
+    color: green;
+  }
+  #salirTienda{
+    font-size: 3vh;
+  }
+  #itemStore button{
+    width:  150px;
+    height: 50px;
+  }
+  #itemStore{
+    padding-top: 40px;
+    row-gap: 40px;
+    column-gap: 5px;
+  }
+  #itemStore img{
+    width: 50px;
+  }
     #cargando  {
         scale: 2;
         transform: translate(-1vh);
