@@ -11,7 +11,8 @@
     justify-content:space-around;
     align-items: center;
     color: aliceblue;
-	cursor: url(./../../assets/cursores/cursor.cur),auto ;
+	cursor: url(./../../assets/cursores/loader/loaderUNO.cur),auto ;
+	animation: loader 1s infinite normal !important ;
   }
 #pantallaDeCarga img{
     height: 0px;

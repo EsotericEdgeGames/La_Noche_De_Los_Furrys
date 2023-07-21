@@ -49,11 +49,12 @@
     #tienda{
         scale:2.5;
     }
-    #pantallaDeCarga {
+    #cargando  {
         scale: 2;
+        transform: translate(-1vh);
     }
     #municionRestante{
-        scale: 4;
+        scale: 3;
         transform: translate(2vh, -1vh);
     }
     @keyframes enemyMoved {
@@ -67,8 +68,9 @@
       }
       #deadTitle div{
         scale: 3;
+        transform: translate(0vh, 13vh);
       }
-      @keyframes deadTitle {from {scale: 3;}to {    transform: translate(0% ,0%);z-index: 10; scale: 3;}}
+      @keyframes deadTitle {from {scale: 3;}to {    transform: translate(0% ,20%);z-index: 10; scale: 3;}}
       #ranking{
         scale: 1.5;
         top: -20%;
@@ -88,9 +90,19 @@
       .column {
         column-gap: 2vh;
       }
-      .primero::after{
-        display: none;
+      .primero::before{
+        content: ""; 
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        height: 200px; 
+        background: url(./../../assets/dead/trophy.png) no-repeat;
+        background-size: contain; 
+        margin-right: 3%;
+        transform: rotate(15deg);
+        animation: trophy 2s infinite alternate;
       }
+      @keyframes trophy {from {transform: rotate(15deg);}to { transform: rotate(-15deg);}}
       .primero{
         font-size: 3vh;
       }
@@ -99,6 +111,7 @@
         margin-bottom: 3%;
       }
       #formNombre{
-        scale: 1.5;
+        scale: 2;
+        transform: translate(6vh);
       }
     }
