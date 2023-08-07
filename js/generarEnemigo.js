@@ -3,7 +3,7 @@ const spriteEnemigos = ["foxy","pato"]
 
 var foxy = {
     vida:3,
-    monedas:0,
+    monedas:2,
     daño:10
 }
 var pato = {

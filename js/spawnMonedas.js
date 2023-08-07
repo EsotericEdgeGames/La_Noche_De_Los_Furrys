@@ -2,7 +2,7 @@ const setSpawnCoins = document.getElementById("moneySpawn")
 const monedasRestantes = document.getElementById("coinsH")
 var monedasPorRecolectar = []
 function crearMoneda(cantidad){
-    cantidad = RNG(cantidad + 3 - (cantidad - 1)) + cantidad - 1
+    cantidad = RNG(2) + cantidad - 1
     if (cantidad === 0){return}
     const limites = setSpawnCoins.getBoundingClientRect();
     var minX = 0
@@ -20,7 +20,8 @@ function crearMoneda(cantidad){
         monedas.classList.add("catchCoins")
         monedas.addEventListener("animationend",function(e){
             monedasPorRecolectar = monedasPorRecolectar.filter(e=>e.div!==monedas)
-            player.monedas = player.monedas + cantidad
+            player.monedas = player.monedas + (Math.round(cantidad*1.5))
+            console.log("lukeando la moneda que suma " + cantidad)
             monedas.remove()
             actualizarValoresPantalla()
         })
