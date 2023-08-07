@@ -3,12 +3,9 @@ function recolectarMonedas(){
         let monedaActual = monedasPorRecolectar[i]
         monedaActual.div.classList.add("catchCoins")
         monedaActual.div.addEventListener("animationend",function(e){
-            if (monedaActual.cantidad<=1){
-                player.monedas = player.monedas + monedaActual.cantidad
-            }
-            else{
-                player.monedas = player.monedas + (Math.floor(monedaActual.cantidad/2))
-            }
+            monedaActual.cantidad = Math.floor(monedaActual.cantidad/2)
+            player.monedas = player.monedas + monedaActual.cantidad
+            console.log("sumando la moneda que da " + monedaActual.cantidad)
             monedaActual.div.remove()
             actualizarValoresPantalla()
         })
