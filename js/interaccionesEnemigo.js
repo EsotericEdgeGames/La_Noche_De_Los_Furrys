@@ -39,7 +39,7 @@ function enemigoRecibeDaño(event, index, enemy) {
             crearMoneda(enemyActual.monedas)
             enemy.remove();
             let existenEnemigosVivos = enemigosVivos.filter(e=>e.vida>0)
-            dropItems()
+            dropExtras(enemyActual)
             if (existenEnemigosVivos.length === 0){
                 enemigosVivos = []
                 indiceEnemigo = -1
@@ -53,7 +53,11 @@ function enemigoRecibeDaño(event, index, enemy) {
         }
     }
 }
-  function dropItems(){
-    player.balasDisponibles = player.balasDisponibles + (RNG(15))
+  function dropExtras(enemigo){
+    let dropBalas = RNG(enemigo.balasMaxDrop)
+    if (dropBalas < enemigo.balasMinDrop){
+        dropBalas = enemigo.balasMinDrop
+    }
+    player.balasDisponibles = player.balasDisponibles + dropBalas
     actualizarValoresPantalla()
 }
