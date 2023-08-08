@@ -74,9 +74,24 @@ for(let i = 0;i<itemsParaVender.length;i++){
         descripcionItemHud.classList.add("none")
     })
     document.getElementById("comprar"+item.item).addEventListener("click",function(){realizarCompra(item.item,item.precio,item.escalado,i)})
-    
 }
 
+function actualizarDescripciones(){
+    for (let i = 0;i<itemsParaVender.length;i++){
+        const item = itemsParaVender[i]
+        switch(item.item){
+            case "velocidadRecarga":
+                item.descripcion = "Tus armas se recargan un 10% más rápido. Actualmente: " + player.velocidadRecarga + "%";
+                break;
+            case "mejoraBalas":         
+                item.descripcion = "Aumenta la posibilidad de recargar sin consumir balas. Solo funciona en recargas completas. Actualmente: " + player.mejoraBalas + "%";
+                break
+            case "daño":
+                item.descripcion = "Aumentas el daño de tus balas en 1. Actualmente: " + player.dañoPorTiro
+                break
+        }
+    }
+}
 function realizarCompra(item,precio,escalado,index){
     if (!item){
         return
@@ -115,6 +130,7 @@ function realizarCompra(item,precio,escalado,index){
             itemsParaVender[index].item = false
         }
         actualizarValoresPantalla()
+        actualizarDescripciones()
     }
 }
 
