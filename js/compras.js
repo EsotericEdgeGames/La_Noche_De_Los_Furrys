@@ -41,6 +41,28 @@ const itemsParaVender = [
         escalado:3,
     },
     {
+        item:"mejoraProgresivaBotiquin",
+        descripcion: false,
+        precio:10,
+        imagen:"",
+        mejoras:[
+            {
+                nombre:"Sanacion exquisita",
+                descripcion:"Los botiquines curan un 20% de salud en lugar de 10"
+            },
+            {
+                nombre:"Piel de hierro",
+                descripcion:"Reduce el daño de los ataques en 5%"
+            },
+            {
+                nombre:"Mejoras al máximo!",
+                descripcion:"Mejorado al máximo!",
+                final:true,
+            }
+        ],
+        mejoraActual: 0
+    },
+    {
         item:"mejoraBalas",
         displayName:"Cartuchos de ensueño",
         descripcion:"Aumenta la posibilidad de recargar sin consumir balas. Solo funciona en recargas completas. Actualmente: " + player.mejoraBalas + "%",  
@@ -49,14 +71,17 @@ const itemsParaVender = [
         escalado:5,
     }
 ]
-
+let descripcionItemHud = document.getElementById("descripcionItem")
 for(let i = 0;i<itemsParaVender.length;i++){
     const item = itemsParaVender[i]
     const elemento = document.createElement("div")
+    if (item.descripcion === false){
+        item.displayName = item.mejoras[item.mejoraActual].nombre
+    }
     elemento.innerHTML =
     `<div class="tiendaItemContenedor">
       <div>
-        <div class="displayNameItemTienda">${item.displayName}</div>
+        <div id = "nombreDe${item.item}" class="displayNameItemTienda">${item.displayName}</div>
         <button id="comprar${item.item}">
           <img src="${item.imagen}" alt="${item.item}">
         </button>
@@ -65,15 +90,26 @@ for(let i = 0;i<itemsParaVender.length;i++){
     </div>`
     itemStore.appendChild(elemento)
     let buttonComprarTienda = document.getElementById("comprar"+item.item)
-    let descripcionItemHud = document.getElementById("descripcionItem")
     buttonComprarTienda.addEventListener("mouseenter",function(){
         descripcionItemHud.classList.remove("none")
-        descripcionItemHud.textContent = item.descripcion
+        if (item.descripcion === false){
+            descripcionItemHud.textContent = item.mejoras[item.mejoraActual].descripcion
+        }
+        else{
+            descripcionItemHud.textContent = item.descripcion
+        }
     })
     buttonComprarTienda.addEventListener("mouseleave",function(){
         descripcionItemHud.classList.add("none")
     })
-    document.getElementById("comprar"+item.item).addEventListener("click",function(){realizarCompra(item.item,item.precio,item.escalado,i)})
+    document.getElementById("comprar"+item.item).addEventListener("click",function(){
+        if(item.descripcion === false){
+            realizarCompraMejoraProgresiva(item)
+        }
+        else{
+            realizarCompra(item.item,item.precio,item.escalado,i)
+        }
+    })
 }
 
 function actualizarDescripciones(){
@@ -133,7 +169,26 @@ function realizarCompra(item,precio,escalado,index){
         actualizarDescripciones()
     }
 }
+function realizarCompraMejoraProgresiva(item) {
+    if (player.monedas >= item.precio) {
+        player.monedas -= item.precio;
+        item.mejoraActual++;
+        if (item.mejoras[item.mejoraActual].final) {
+            item.mejoraActual = item.mejoras.length-1
+            descripcionItemHud.textContent = "¡Mejorado al máximo!"
+            item.precio = "Sin Stock!"
+            document.getElementById("valor"+item.item).textContent = "valor X " + item.precio
+        }
+        else{
+            const mejoraActual = item.mejoras[item.mejoraActual];
+            let nombreMejora = mejoraActual.nombre
+            document.getElementById("nombreDe"+item.item).textContent = nombreMejora
+            descripcionItemHud.textContent = mejoraActual.descripcion;   
+        }
 
+        actualizarValoresPantalla();
+    }
+}
 /*let precios = {
     botiquin:3,
     balas:5,
