@@ -3,9 +3,9 @@ const spriteEnemigos = ["foxy","pato"]
 
 var foxy = {
     vida:3,
-    monedas:1,
+    monedas:2,
     daño:10,
-    balasMaxDrop:4,
+    balasMaxDrop:5,
     balasMinDrop:2
 }
 var pato = {
@@ -107,8 +107,8 @@ function spawnFoxy(elementoEnemigo,index){
     indiceBorrar: elementoEnemigo,
     imagen: "foxy",
     monedas: foxy.monedas + rondaActual,
-    balasMaxDrop: foxy.balasMaxDrop + rondaActual,
-    balasMinDrop: foxy.balasMinDrop + rondaActual
+    balasMaxDrop: foxy.balasMaxDrop * rondaActual,
+    balasMinDrop: foxy.balasMinDrop * rondaActual
    });
 }
 
@@ -134,7 +134,7 @@ function spawnPato(elementoEnemigo,index){
     indiceBorrar: elementoEnemigo,
     imagen: "pato",
     monedas: pato.monedas + rondaActual,
-    balasMaxDrop: pato.balasMaxDrop + rondaActual,
-    balasMinDrop: pato.balasMinDrop + rondaActual
+    balasMaxDrop: pato.balasMaxDrop * rondaActual,
+    balasMinDrop: pato.balasMinDrop * rondaActual
    });
 }
