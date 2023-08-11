@@ -9,6 +9,7 @@
     animation: StartLogo 10s infinite alternate ;
     background: url(./../../assets/start/Forest.png) no-repeat;
     background-position: center;
+    background-size: cover;
     
   }
   @keyframes StartLogo {from {background-position-x: -50vh;}to {background-position-x: -90vh;}}
