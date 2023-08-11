@@ -23,7 +23,7 @@ var generadorEnemigos;
 
 var terminarFase
 
-var multiplicador
+
 
 function generarEnemigo() {
     indiceEnemigo++;
