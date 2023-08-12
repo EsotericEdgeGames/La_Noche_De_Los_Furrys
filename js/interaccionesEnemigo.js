@@ -5,15 +5,17 @@ function damage(event, index, enemigoActual,enemigo) { //El enemigo te hittea
     }
     let daño
     switch(enemigo){
-        case "foxy":daño=foxy.daño;
-        case "pato":daño=pato.daño
+        case "foxy":daño=foxy.daño;break;
+        case "pato":daño=pato.daño;break;
     }
     if (enemigoActual) {
+        player.salud = 999
         enemigoActual.style.animation = "none";
         enemigoActual.offsetHeight;
         enemigoActual.style.animation = null;
         player.salud = player.salud - daño;
         actualizarValoresPantalla()
+        setVelocidad(enemigoActual,enemigo)
     }
 }
 function enemigoRecibeDaño(event, index, enemy) {
@@ -36,9 +38,6 @@ function enemigoRecibeDaño(event, index, enemy) {
                     enemigosVivos[index].vida = enemigosVivos[index].vida - (armaEquipada.balas * dañoRealizado)
                 }
         }
-        setTimeout(() => {
-            enemigosVivos[index].indiceBorrar.classList.remove("daño")
-        }, 100);
         if (enemigosVivos[index].vida <= 0) {
             let enemyActual = enemigosVivos[index]
             crearMoneda(enemyActual.monedas)
@@ -55,6 +54,11 @@ function enemigoRecibeDaño(event, index, enemy) {
                     }, 2500);
                 }
             }
+        }
+        else{
+            setTimeout(() => {
+                enemigosVivos[index].indiceBorrar.classList.remove("daño")
+            }, 100);
         }
     }
 }
