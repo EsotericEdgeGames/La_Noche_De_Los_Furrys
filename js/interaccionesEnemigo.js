@@ -23,10 +23,12 @@ function enemigoRecibeDaño(event, index, enemy) {
         switch(armaEquipada.especial){
             case false:
                 if (armaEquipada.balas>0){
+                    enemigosVivos[index].indiceBorrar.classList.add("daño")
                     enemigosVivos[index].vida = enemigosVivos[index].vida - dañoRealizado
                 }
                 break
             case "rafaga":
+                enemigosVivos[index].indiceBorrar.classList.add("daño")
                 if (armaEquipada.balas>armaEquipada.balasPorTiro){
                     enemigosVivos[index].vida = enemigosVivos[index].vida - (armaEquipada.balasPorTiro * dañoRealizado)
                 }
@@ -34,6 +36,9 @@ function enemigoRecibeDaño(event, index, enemy) {
                     enemigosVivos[index].vida = enemigosVivos[index].vida - (armaEquipada.balas * dañoRealizado)
                 }
         }
+        setTimeout(() => {
+            enemigosVivos[index].indiceBorrar.classList.remove("daño")
+        }, 100);
         if (enemigosVivos[index].vida <= 0) {
             let enemyActual = enemigosVivos[index]
             crearMoneda(enemyActual.monedas)

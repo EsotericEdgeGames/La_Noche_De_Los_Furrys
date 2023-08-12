@@ -42,6 +42,7 @@ const armas = [{ //Armas existentes
     balasPorTiro:4
   }]
 function iniciarGameplay(){
+    crearSonidos("musicaFondoGameplay")
     player = { //Stats del jugador
         armas: [],
         salud:100,

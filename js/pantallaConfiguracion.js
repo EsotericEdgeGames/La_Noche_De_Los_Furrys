@@ -3,6 +3,7 @@ const botonReasignarTeclaUsarBotiquin = document.getElementById("reasignarTeclaB
 const botonReasignarTeclaUsarBomba = document.getElementById("reasignarTeclaBomba")
 const bloqueoPantallaDeConfiguracion = document.getElementById("replace")
 const textoBloqueoPantallaDeConfiguracion = document.getElementById("textoReplace")
+const switchSonido = document.getElementById("switchSonido")
 
 let teclas = {
     recargar:"R",
@@ -67,8 +68,19 @@ reasignarTeclas(botonReasignarTeclaRecargar,"recargar")
 reasignarTeclas(botonReasignarTeclaUsarBotiquin,"usarBotiquin")
 reasignarTeclas(botonReasignarTeclaUsarBomba,"usarBomba")
 
+switchSonido.addEventListener("click",function(e){
+    crearSonidos("botoncito")
+    if (reproducenSonidos){
+        reproducenSonidos = false
+        switchSonido.textContent = "sonido/OFF"
+        return
+    }
+    reproducenSonidos = true
+    switchSonido.textContent = "sonido/ON"
+})
 
 document.getElementById("volverAInicio").addEventListener("click",function(e){
+    crearSonidos("botoncito")
     localStorage.setItem("controlesPrevios", JSON.stringify(teclas));
     transicionar(pantallaDeConfiguracion,"desaparecer")
     transicionar(pantallaDeInicio,"aparecer")

@@ -58,7 +58,7 @@
 }
 #Accion{
     transition: 1s;
-    background-color: green;
+    background-color: rgba(0, 41, 0, 0.993);
     border-bottom: 1px solid;
     border-top:1px solid ;
     width: 100%;
@@ -72,7 +72,7 @@
 #accion div{
     border-bottom: 1px solid;
     border-top:1px solid ;
-    background-color: darkmagenta;
+    background-color: rgb(70, 0, 70);
     align-items: center;
     font-size: 22px;
 }

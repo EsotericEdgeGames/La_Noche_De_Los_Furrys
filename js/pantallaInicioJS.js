@@ -14,6 +14,7 @@ const pantallaDeConfiguracion = document.getElementById("configurationH")
 let rondaActual
 
 function irAInicioDeJuego(){
+    crearSonidos("botoncito")
     displayPantallaDeCarga(true)
     setTimeout(() => { //Delay irreal para ver la pantalla de carga
         transicionar(pantallaDeJuego,"aparecer")
@@ -27,10 +28,12 @@ function irAInicioDeJuego(){
 }
 
 function irAComoJugar(){
+    crearSonidos("botoncito")
 
 }
 
 function irAConfigurarBotones(){
+    crearSonidos("botoncito")
     displayPantallaDeCarga(true)
     setTimeout(() => { //Delay irreal para ver la pantalla de carga
         transicionar(pantallaDeConfiguracion,"aparecer")

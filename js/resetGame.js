@@ -1,5 +1,6 @@
 document.getElementById("reverseButtonB").addEventListener("click",function(){resetGame()})
 function resetGame(){
+    detenerSonido("musicaPantallaMuerte")
     triggerDelay = false
     triggerTimeout = undefined
     bloqueoDeTiro = undefined

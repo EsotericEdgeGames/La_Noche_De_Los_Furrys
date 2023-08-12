@@ -25,12 +25,11 @@
 }
 
 #logo{
-    width: 1000px; 
-    height: 400px; 
-    background-color: rgba(255, 0, 0, 0.479); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 600px; 
+    height: 300px; 
+    background: url(./../../assets/start/Logo_Piola.png) no-repeat;
+    background-size: cover;
+    background-position:top;
 }
 
 #gameTitle button{
