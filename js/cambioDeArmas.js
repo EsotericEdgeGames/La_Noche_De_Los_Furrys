@@ -1,5 +1,6 @@
 var triggerDelay = false;
 var triggerTimeout;
+const armaEquipadaDisplay = document.getElementById("weaponH")
 
 document.addEventListener("wheel", function(e) { //Cambiar arma
   if (!triggerDelay) {
@@ -19,7 +20,6 @@ document.addEventListener("wheel", function(e) { //Cambiar arma
 
     let armaEquipada = player.armas[player.equipada];
     console.log(armaEquipada)
-    const armaEquipadaDisplay = document.getElementById("weaponH")
     armaEquipadaDisplay.textContent = "Arma equipada: " +armaEquipada.nombre;
     actualizarValoresPantalla()
     triggerTimeout = setTimeout(function() {
