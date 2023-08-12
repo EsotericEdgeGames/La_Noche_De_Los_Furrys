@@ -27,5 +27,5 @@ function resetGame(){
     for(let i=0;i<armas.length;i++){
         armas[i].balas = armas[i].balasMaximas
     }
-    armaEquipadaDisplay.textContent = "Arma equipada: " + armas[0].nombre
+    armaEquipadaDisplay.textContent = "Arma equipada: " + armas[0].nombreS
 }
