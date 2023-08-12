@@ -9,7 +9,6 @@ function damage(event, index, enemigoActual,enemigo) { //El enemigo te hittea
         case "pato":daño=pato.daño;break;
     }
     if (enemigoActual) {
-        player.salud = 999
         enemigoActual.style.animation = "none";
         enemigoActual.offsetHeight;
         enemigoActual.style.animation = null;
