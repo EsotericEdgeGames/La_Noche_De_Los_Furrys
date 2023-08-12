@@ -1,4 +1,5 @@
 function recolectarMonedas(finalPartida){
+    if (!finalPartida){crearSonidos("monedaFinal")}
     for (let i=0;i<monedasPorRecolectar.length;i++){
         let monedaActual = monedasPorRecolectar[i]
         monedaActual.div.classList.add("catchCoins")

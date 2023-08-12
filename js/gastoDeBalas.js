@@ -22,11 +22,15 @@ function triggerDisparo(){
       case false:
         console.log("gastando")
         if (armaEquipada.balas>0){
+          crearSonidos("balaPistola")
           armaEquipada.balas--
         }
         break
       case "rafaga":
         console.log("gastando balas a rafaga")
+        if (armaEquipada.balas > 0){
+          crearSonidos("balaPistola")
+        }
         if ((armaEquipada.balas - armaEquipada.balasPorTiro)>0){
           console.log("gastando el maximo de balas")
           armaEquipada.balas = armaEquipada.balas - armaEquipada.balasPorTiro

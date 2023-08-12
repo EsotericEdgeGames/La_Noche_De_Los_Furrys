@@ -1,5 +1,6 @@
 const setSpawnCoins = document.getElementById("moneySpawn")
 const monedasRestantes = document.getElementById("coinsH")
+
 var monedasPorRecolectar = []
 function crearMoneda(cantidad){
     cantidad = RNG(2) + cantidad - 1
@@ -16,7 +17,8 @@ function crearMoneda(cantidad){
     monedas.style.left = coordenadaX + "px";
     setSpawnCoins.appendChild(monedas)
     monedasPorRecolectar.push({div:monedas,cantidad:cantidad})
-    monedas.addEventListener("mouseover",function(e){
+    monedas.addEventListener("mouseenter",function(e){
+        crearSonidos("moneda")
         monedas.classList.add("catchCoins")
         monedas.addEventListener("animationend",function(e){
             monedasPorRecolectar = monedasPorRecolectar.filter(e=>e.div!==monedas)

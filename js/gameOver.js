@@ -2,6 +2,11 @@ const pantallaMuerte = document.getElementById("dead")
 const puntuacionTotalDisplay = document.getElementById("puntuacion")
 let puntos
 function finDelJuego(){
+    detenerSonido("musicaFondoGameplay")
+    crearSonidos("gameOver")
+    setTimeout(() => {
+        crearSonidos("musicaPantallaMuerte")
+    }, 50);
     noPuedeDisparar()
     transicionar(pantallaMuerte,"aparecer")
     transicionar(pantallaDeJuego,"desaparecer")
