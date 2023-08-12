@@ -120,6 +120,7 @@ function realizarCompra(item,precio,escalado,index){
         if (itemModificar.precio === 0){
             itemsParaVender[index].item = false
         }
+        actualizarValoresPantalla()
         crearSonidos("comprarItem")
     }
 }

@@ -6,14 +6,16 @@ var foxy = {
     monedas:2,
     daño:10,
     balasMaxDrop:5,
-    balasMinDrop:2
+    balasMinDrop:2,
+    velocidad: 3.7
 }
 var pato = {
     vida:2,
     monedas:10,
     daño:20,
     balasMaxDrop:0,
-    balasMinDrop:0
+    balasMinDrop:0,
+    velocidad:3.7
 }
 
 
@@ -108,8 +110,10 @@ function spawnFoxy(elementoEnemigo,index){
     imagen: "foxy",
     monedas: foxy.monedas + rondaActual,
     balasMaxDrop: foxy.balasMaxDrop * rondaActual,
-    balasMinDrop: foxy.balasMinDrop * rondaActual
+    balasMinDrop: foxy.balasMinDrop * rondaActual,
+    velocidad: foxy.velocidad - (rondaActual/5)
    });
+   setVelocidad(elementoEnemigo,"foxy")
 }
 
 function spawnPato(elementoEnemigo,index){
@@ -135,6 +139,16 @@ function spawnPato(elementoEnemigo,index){
     imagen: "pato",
     monedas: pato.monedas + rondaActual,
     balasMaxDrop: pato.balasMaxDrop * rondaActual,
-    balasMinDrop: pato.balasMinDrop * rondaActual
+    balasMinDrop: pato.balasMinDrop * rondaActual,
+    velocidad: pato.velocidad - rondaActual + 5
    });
+   setVelocidad(elementoEnemigo,"pato")
+}
+
+function setVelocidad(enemigo,nombre){
+  console.log("actualizando la velocidad del enemigo " + nombre + " con div " + enemigo)
+  switch(nombre){
+    case "foxy": enemigo.style.animationDuration = (Math.max(foxy.velocidad - (rondaActual/5),1)) + "s";break
+    case "pato": enemigo.style.animationDuration = (Math.max(pato.velocidad - rondaActual + 5,0.8)) + "s";break
+  } 
 }
