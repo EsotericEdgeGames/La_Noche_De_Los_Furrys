@@ -25,6 +25,39 @@ var generadorEnemigos;
 
 var terminarFase
 
+const animacionesDireccionales = ["moveL","moveR","moveB","moveT"]
+
+function moveElement() {
+  const containerWidth = parseFloat(getComputedStyle(spawnPoints).width);
+  const containerHeight = parseFloat(getComputedStyle(spawnPoints).height);
+  for (let i=0;i<enemigosVivos.length;i++){
+    const elementRect = enemigosVivos[i].indiceBorrar.getBoundingClientRect();
+    
+    if (elementRect.left <= 0) {
+      enemigosVivos[i].indiceBorrar.classList.remove("moveL")
+      let patterns = animacionesDireccionales.filter(a=>a !== "moveL")
+      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+    }
+    else if (elementRect.right >=containerWidth){
+      enemigosVivos[i].indiceBorrar.classList.remove("moveR")
+      let patterns = animacionesDireccionales.filter(a=>a !== "moveR")
+      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+    }
+    else if(elementRect.top <=0){
+      enemigosVivos[i].indiceBorrar.classList.remove("moveT")
+      let patterns = animacionesDireccionales.filter(a=>a !== "moveT")
+      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+    }
+    else if (elementRect.bottom >= containerHeight){
+      enemigosVivos[i].indiceBorrar.classList.remove("moveB")
+      let patterns = animacionesDireccionales.filter(a=>a !== "moveB")
+      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+    }
+  }
+  if (enemigosVivos.length === 0){return}
+  requestAnimationFrame(moveElement)
+}
+
 
 
 function generarEnemigo() {
@@ -69,6 +102,8 @@ function iniciarGeneracionAutomatica(buffMonedas) {
 
   var contadorRondas = 0;
   var incrementoSprite = 0;
+
+
   function crearEnemigo(index) {
     let indiceSprite = 0;
     let indiceActualizado = indiceSprite + incrementoSprite;
@@ -92,17 +127,25 @@ function iniciarGeneracionAutomatica(buffMonedas) {
 
 function spawnFoxy(elementoEnemigo,index){
   let animacion
-    switch(RNG(1)){ //Definir como se movera el enemigo
-      case 0:
-        animacion = "moveOne"
-        break
-      case 1:
-        animacion = "moveTwo"
-        break      
-    }
+  switch(RNG(3)){ //Definir como se movera el enemigo
+    case 0:
+      animacion = "moveL"
+      break
+    case 1:
+      animacion = "moveR"
+      break
+    case 2:
+      animacion = "moveB"
+      break
+    case 3:
+      animacion = "moveT"
+      break
+  }
   elementoEnemigo.classList.add(animacion,"foxy") //Agregar las clases
+  console.log(elementoEnemigo.classList)
   var spawnPoints = document.getElementById("spawnPoints");
   spawnPoints.appendChild(elementoEnemigo);
+  requestAnimationFrame(moveElement);
   enemigosVivos.push({
     index: index,
     vida: foxy.vida * rondaActual,
@@ -116,9 +159,11 @@ function spawnFoxy(elementoEnemigo,index){
    setVelocidad(elementoEnemigo,"foxy")
 }
 
+
+
 function spawnPato(elementoEnemigo,index){
   let animacion
-  switch(RNG(2)){
+  switch(RNG(2)){ //NO FUNCIONAN
     case 0:
       animacion = "moveThree"
       break
@@ -132,6 +177,7 @@ function spawnPato(elementoEnemigo,index){
   elementoEnemigo.classList.add(animacion,"pato")
   var spawnPoints = document.getElementById("spawnPoints");
   spawnPoints.appendChild(elementoEnemigo);
+  requestAnimationFrame(moveElement);
   enemigosVivos.push({
     index: index,
     vida: pato.vida * rondaActual,

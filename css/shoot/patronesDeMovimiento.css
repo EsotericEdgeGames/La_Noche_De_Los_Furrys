@@ -74,5 +74,19 @@
     animation-play-state: paused !important;
 
 }
-  
-
+.moveL{
+  transform: translateX(-1100vh);
+  transition: 25s;
+}
+.moveR{
+  transform: translateX(120vh);
+  transition: 5s;
+}
+.moveT{
+  transform: translateY(-120vh);
+  transition: 5s;
+}
+.moveB{
+  transform: translateY(120vh);
+  transition: 5s;
+}
