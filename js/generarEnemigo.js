@@ -27,12 +27,24 @@ var generadorEnemigos;
 
 var terminarFase
 
-const animacionesDireccionales = ["moveL","moveR","moveB","moveT"]
+const animacionesDireccionales = {
+  izquierda:["moveL","moveLT"],
+
+  derecha:["moveR","moveRT"],
+
+  abajo:["moveB","moveBT"],
+  
+  arriba:["moveT","moveTT"]
+}
+
+const direcciones = ["izquierda", "derecha", "arriba", "abajo"];
 
 
 function eliminarMovimientos(indice){
-  for(let i=0;i<animacionesDireccionales.length;i++){
-    enemigosVivos[indice].indiceBorrar.classList.remove(animacionesDireccionales[i])
+  for (let direccion in animacionesDireccionales){
+    for (let clase of animacionesDireccionales[direccion]){
+      enemigosVivos[indice].indiceBorrar.classList.remove(clase)
+    }
   }
 }
 function moveElement() {
@@ -44,23 +56,31 @@ function moveElement() {
     
     if (elementRect.left <= 0) {
       eliminarMovimientos(k)
-      let patterns = animacionesDireccionales.filter(a=>a !== "moveL")
-      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+      let direccionesRestantes = direcciones.filter(a=>a !== "izquierda")
+      let direccion = direccionesRestantes[RNG(2)]
+      let clase = animacionesDireccionales[direccion][RNG(animacionesDireccionales[direccion].length - 1)]
+      enemigosVivos[i].indiceBorrar.classList.add(clase)
     }
     else if (elementRect.right >=containerWidth){
       eliminarMovimientos(k)
-      let patterns = animacionesDireccionales.filter(a=>a !== "moveR")
-      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+      let direccionesRestantes = direcciones.filter(a=>a !== "derecha")
+      let direccion = direccionesRestantes[RNG(2)]
+      let clase = animacionesDireccionales[direccion][RNG(animacionesDireccionales[direccion].length - 1)]
+      enemigosVivos[i].indiceBorrar.classList.add(clase)
     }
     else if(elementRect.top <=0){
       eliminarMovimientos(k)
-      let patterns = animacionesDireccionales.filter(a=>a !== "moveT")
-      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+      let direccionesRestantes = direcciones.filter(a=>a !== "arriba")
+      let direccion = direccionesRestantes[RNG(2)]
+      let clase = animacionesDireccionales[direccion][RNG(animacionesDireccionales[direccion].length - 1)]
+      enemigosVivos[i].indiceBorrar.classList.add(clase)
     }
     else if (elementRect.bottom >= containerHeight){
       eliminarMovimientos(k)
-      let patterns = animacionesDireccionales.filter(a=>a !== "moveB")
-      enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
+      let direccionesRestantes = direcciones.filter(a=>a !== "abajo")
+      let direccion = direccionesRestantes[RNG(2)]
+      let clase = animacionesDireccionales[direccion][RNG(animacionesDireccionales[direccion].length - 1)]
+      enemigosVivos[i].indiceBorrar.classList.add(clase)
     }
     else{
       enemigosVivos[i].daño = enemigosVivos[i].dañoReal;
