@@ -4,7 +4,8 @@ const spriteEnemigos = ["foxy","pato"]
 var foxy = {
     vida:3,
     monedas:2,
-    daño:10,
+    daño:0,
+    dañoReal:10,
     balasMaxDrop:5,
     balasMinDrop:2,
     velocidad: 3.7
@@ -12,7 +13,8 @@ var foxy = {
 var pato = {
     vida:2,
     monedas:10,
-    daño:20,
+    daño:0,
+    dañoReal:20,
     balasMaxDrop:0,
     balasMinDrop:0,
     velocidad:3.7
@@ -27,32 +29,44 @@ var terminarFase
 
 const animacionesDireccionales = ["moveL","moveR","moveB","moveT"]
 
+
+function eliminarMovimientos(indice){
+  for(let i=0;i<animacionesDireccionales.length;i++){
+    enemigosVivos[indice].indiceBorrar.classList.remove(animacionesDireccionales[i])
+  }
+}
 function moveElement() {
   const containerWidth = parseFloat(getComputedStyle(spawnPoints).width);
   const containerHeight = parseFloat(getComputedStyle(spawnPoints).height);
   for (let i=0;i<enemigosVivos.length;i++){
+    let k = i
     const elementRect = enemigosVivos[i].indiceBorrar.getBoundingClientRect();
     
     if (elementRect.left <= 0) {
-      enemigosVivos[i].indiceBorrar.classList.remove("moveL")
+      eliminarMovimientos(k)
       let patterns = animacionesDireccionales.filter(a=>a !== "moveL")
       enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
     }
     else if (elementRect.right >=containerWidth){
-      enemigosVivos[i].indiceBorrar.classList.remove("moveR")
+      eliminarMovimientos(k)
       let patterns = animacionesDireccionales.filter(a=>a !== "moveR")
       enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
     }
     else if(elementRect.top <=0){
-      enemigosVivos[i].indiceBorrar.classList.remove("moveT")
+      eliminarMovimientos(k)
       let patterns = animacionesDireccionales.filter(a=>a !== "moveT")
       enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
     }
     else if (elementRect.bottom >= containerHeight){
-      enemigosVivos[i].indiceBorrar.classList.remove("moveB")
+      eliminarMovimientos(k)
       let patterns = animacionesDireccionales.filter(a=>a !== "moveB")
       enemigosVivos[i].indiceBorrar.classList.add(patterns[RNG(patterns.length-1)])
     }
+    else{
+      enemigosVivos[i].daño = enemigosVivos[i].dañoReal;
+      enemigosVivos[i].indiceBorrar.classList.add(enemigosVivos[i].imagen)
+    }
+    
   }
   if (enemigosVivos.length === 0){return}
   requestAnimationFrame(moveElement)
@@ -114,8 +128,9 @@ function iniciarGeneracionAutomatica(buffMonedas) {
       case "foxy":spawnFoxy(nuevoEnemigo,index);break
       case "pato":spawnPato(nuevoEnemigo,index);break
     }
-    
-    
+    if (index === 0){
+      requestAnimationFrame(moveElement)
+    }
     
     nuevoEnemigo.addEventListener("animationend", function (event) {
       damage(event, index, nuevoEnemigo,spriteEnemigoActual);
@@ -141,11 +156,10 @@ function spawnFoxy(elementoEnemigo,index){
       animacion = "moveT"
       break
   }
-  elementoEnemigo.classList.add(animacion,"foxy") //Agregar las clases
+  elementoEnemigo.classList.add(animacion) //Agregar las clases
   console.log(elementoEnemigo.classList)
   var spawnPoints = document.getElementById("spawnPoints");
   spawnPoints.appendChild(elementoEnemigo);
-  requestAnimationFrame(moveElement);
   enemigosVivos.push({
     index: index,
     vida: foxy.vida * rondaActual,
@@ -154,6 +168,8 @@ function spawnFoxy(elementoEnemigo,index){
     monedas: foxy.monedas + rondaActual,
     balasMaxDrop: foxy.balasMaxDrop * rondaActual,
     balasMinDrop: foxy.balasMinDrop * rondaActual,
+    daño:foxy.daño,
+    dañoReal:foxy.dañoReal,
     velocidad: foxy.velocidad - (rondaActual/5)
    });
    setVelocidad(elementoEnemigo,"foxy")
@@ -174,10 +190,9 @@ function spawnPato(elementoEnemigo,index){
       animacion = "moveFive"
       break
   }
-  elementoEnemigo.classList.add(animacion,"pato")
+  elementoEnemigo.classList.add(animacion)
   var spawnPoints = document.getElementById("spawnPoints");
   spawnPoints.appendChild(elementoEnemigo);
-  requestAnimationFrame(moveElement);
   enemigosVivos.push({
     index: index,
     vida: pato.vida * rondaActual,
@@ -186,6 +201,8 @@ function spawnPato(elementoEnemigo,index){
     monedas: pato.monedas + rondaActual,
     balasMaxDrop: pato.balasMaxDrop * rondaActual,
     balasMinDrop: pato.balasMinDrop * rondaActual,
+    daño:pato.daño,
+    dañoReal:pato.dañoReal,
     velocidad: pato.velocidad - rondaActual + 5
    });
    setVelocidad(elementoEnemigo,"pato")

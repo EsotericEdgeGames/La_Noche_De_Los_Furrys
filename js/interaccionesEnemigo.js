@@ -2,12 +2,9 @@ function damage(event, index, enemigoActual,enemigo) { //El enemigo te hittea
     if (jugadorPierde){
         enemigoActual.remove()
         enemigoActual = false
+        return
     }
-    let daño
-    switch(enemigo){
-        case "foxy":daño=foxy.daño;break;
-        case "pato":daño=pato.daño;break;
-    }
+    let daño = enemigosVivos[index].daño
     if (enemigoActual) {
         enemigoActual.style.animation = "none";
         enemigoActual.offsetHeight;
